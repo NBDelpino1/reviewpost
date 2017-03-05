@@ -1,8 +1,5 @@
 // set up node server and include routes
 
-
-
-
 // require the dependencies
 var express = require('express');
 
