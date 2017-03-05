@@ -2,6 +2,7 @@
 
 // require the dependencies
 var express = require('express');
+var bodyParser = require('body-parser');
 
 // set up port
 var PORT = process.env.PORT || 8080;
