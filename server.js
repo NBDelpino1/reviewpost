@@ -15,6 +15,11 @@ var router = express.Router();
 // designate the public folder the the static directory
 app.use(express.static(__dirname + '/public'));
 
+// set up body parser
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
 // have every request go through router middleware
 app.use(router);
 
