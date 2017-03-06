@@ -2,7 +2,7 @@
 
 module.exports = function(router) {
 
-    // leads to homepage
+    // leads to home.handlebars
     router.get('/', function(req, res) {
         res.render('home');
     });
