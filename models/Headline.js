@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 
 // create app schema that requires a headline and a summary
 // headline has to be unique so I don't scrape the same articles over and over again into the schema
-// * saved initially set to false but will change if user decides they want to save the article
+// * saved variable initially set to false but will change if user decides they want to save the article
 var headlineSchema = new Schema({
     headline: {
         type: String,
