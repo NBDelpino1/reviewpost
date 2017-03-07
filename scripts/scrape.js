@@ -45,13 +45,15 @@ var scrape = function(cb){
                 // push the new dataToAdd into the articles array
                 articles.push(dataToAdd);
             }
+
         });
 
         // call back will send me articles that have now filled up the previously created array which was empty before
         cb(articles);
 
     });
-}
+
+};
 
 // export so I can use this throughout the program
 module.exports = scrape;
