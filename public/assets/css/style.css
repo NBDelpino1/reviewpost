@@ -8,3 +8,12 @@ body {
     background-color: transparent;
     border:0;
 }
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.jumbotron {
+    background-color: transparent;
+    border:0;
+}
