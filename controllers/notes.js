@@ -55,4 +55,16 @@ module.exports = {
 
     },
 
-}
+    // (2) *** DELETE function will remove the note associated with the article
+
+    delete: function(data,cb) {
+
+        Note.remove({
+
+            _id: data._id
+
+        }, cb);
+
+    }
+
+};
