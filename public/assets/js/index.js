@@ -1,6 +1,5 @@
 // will handle the index page (display results)
 
-
 $(document).ready(function () {
 
     // set a reference to the article-container div where all the dynamic content will go
@@ -57,7 +56,7 @@ $(document).ready(function () {
 
     }
 
-    function createpanel(article) {
+    function createPanel(article) {
 
         // this function takes in a single JSON object for an article/headline
         //it constructs a jQuery element containing all of the formatted HTML for the article panel
@@ -144,7 +143,7 @@ $(document).ready(function () {
 
     }
 
-    function handleArticleScrape() {
+    function handleArticleSrape() {
 
         // this function handles the user clicking an 'scrape new article'
 

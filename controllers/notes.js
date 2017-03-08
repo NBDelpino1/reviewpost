@@ -1,7 +1,7 @@
 // will contain CRUD functionality
 
 // bring in Note.js script and date.js scripts
-var Note = require('../scripts/Note');
+var Note = require('../scripts/scrape');
 var makeDate = require('../scripts/date');
 
 
@@ -68,3 +68,5 @@ module.exports = {
     }
 
 };
+
+
