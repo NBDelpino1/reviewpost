@@ -19,7 +19,7 @@ var scrape = function(cb){
         // empty array that will hold the articles
         var articles = [];
 
-       // magic happens here:
+        // magic happens here:
         // select all the *[theme-summaries]* and on each one of these *[theme-summaries]*....
 
         $('.theme-summary').each(function(i,element) {
@@ -47,9 +47,10 @@ var scrape = function(cb){
             }
 
         });
-
+        console.log(articles)
         // call back will send me articles that have now filled up the previously created array which was empty before
         cb(articles);
+
 
     });
 

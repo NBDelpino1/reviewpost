@@ -1,29 +1,26 @@
-// will hold Mongoose schema associated with notes,
-// will indicate what pieces to save in the table i.e. article name, link and notes associated with it etc
+// Note model
+// ==========
 
-// will hold Mongoose schema associated with notes,
-// will indicate what pieces to save in the table i.e. article name, link and notes associated with it etc
-
-// require Mongoose npm package
+// require mongoose
 var mongoose = require('mongoose');
-
-// create schema using mongoose schema function
+// create the schema class using mongoose's schema method
 var Schema = mongoose.Schema;
 
-// create app schema that requires a headlineID (associated article that the note will be attached too) and a noteText (the note the user types in)
-var headlineSchema = new Schema({
-    _headlineID: {
-        type: String,
+// create the noteSchema with the schema object
+var noteSchema = new Schema({
+    // the headline is the article associate with the note
+    _headlineId: {
+        type: Schema.Types.ObjectId,
         ref: 'Headline'
-
     },
+    // date is just a string
     date: String,
-    saved: {
-        noteText: String
-    }
+    // as is the noteText
+    noteText: String
 });
 
-var Note = mongoose.model('Note', headlineSchema);
+// create the Note model using the noteSchema
+var Note = mongoose.model('Note', noteSchema);
 
-// export out note model for use throughout the app
+// export the Note model
 module.exports = Note;

@@ -3,6 +3,7 @@
 // require the dependencies
 var express = require('express');
 var mongoose = require('mongoose');
+
 var expressHandlebars = require('express-handlebars');
 var bodyParser = require('body-parser');
 
@@ -40,6 +41,8 @@ app.use(router);
 // if deployed, use the deployed db. Otherwise use the local db on local machine
 var db = process.env.MONGODB_URI || 'mongodb://localhost/reviewpost';
 
+mongoose.Promise = global.Promise;
+
 // connect mongoose to db
 mongoose.connect(db, function(error){
     //log any errors
@@ -47,7 +50,8 @@ mongoose.connect(db, function(error){
         console.log(error);
     }
     else {
-       console.log('mongoose connection successful')
+
+        console.log('mongoose connection successful')
     }
 });
 

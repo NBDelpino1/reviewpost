@@ -62,13 +62,13 @@ module.exports = function(router) {
 
             query = req.query;
         }
-        
+
         headlinesController.get(query, function (data) {
 
             res.json(data);
-            
+
         });
-        
+
     });
 
     router.delete('/api/headlines/:id', function (req,res) {
@@ -78,7 +78,7 @@ module.exports = function(router) {
         headlinesController.delete(query, function (err,data) {
 
             res.json(data);
-            
+
         });
 
     });
@@ -89,7 +89,7 @@ module.exports = function(router) {
         headlinesController.update(req.body, function (err,data) {
 
             res.json(data);
-            
+
         });
 
     });
@@ -122,7 +122,7 @@ module.exports = function(router) {
             res.json(data);
 
         });
-        
+
     });
 
     // api route to display notes

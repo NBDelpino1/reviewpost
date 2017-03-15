@@ -1,33 +1,30 @@
-// will hold Mongoose schema associated with notes,
-// will indicate what pieces to save in the table i.e. article name, link and notes associated with it etc
+// Headline model
+// ==============
 
-// require Mongoose npm package
+// require mongoose
 var mongoose = require('mongoose');
 
-// create schema using mongoose schema function
+// create a schema class using mongoose's schema method
 var Schema = mongoose.Schema;
 
-// create app schema that requires a headline and a summary
-// headline has to be unique so I don't scrape the same articles over and over again into the schema
-// * saved variable initially set to false but will change if user decides they want to save the article
+// create the headlineSchema with our schema class
 var headlineSchema = new Schema({
+    // headline, a string, must be entered
     headline: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    summary: {
         type: String,
         required: true
     },
+    // summary, a string, must be entered
+    summary:{
+        type: String,
+        required: true
+    },
+    // date is just a string
     date: String,
-    saved: {
-        type: Boolean,
-        default: false
-    }
 });
 
+// create the Headline model using the headlineSchema
 var Headline = mongoose.model('Headline', headlineSchema);
 
-// export out headline model for use throughout the app
+// export the Headline model
 module.exports = Headline;
