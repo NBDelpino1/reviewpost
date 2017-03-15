@@ -96,7 +96,7 @@ $(document).ready(function () {
 
         var emptyAlert =
             $([
-                '<div class="alert alert-warning text-center">',
+                '<div class="alert alert-info text-center">',
                 '<h4>Uh oh. Looks like we do not have any new articles.</h4>',
                 '</div>',
                 '<div class="panel panel-default">',
@@ -104,8 +104,10 @@ $(document).ready(function () {
                 '<h3>What would you like to do?</h3>',
                 '</div>',
                 '<div class="panel-body text-center">',
-                '<h4><a class="scrape-new">Try Scraping New Articles</a></h4>',
-                '<h4><a href="/saved">Go to Saved Articles</a></h4>',
+                // '<h4><a class="scrape-new">Try Scraping New Articles</a></h4>',
+                '<button type="button" class="btn btn-primary btn-lg scrape-new">Try Scraping New Articles</button>',
+                // '<h4><a href="/saved">Go to Saved Articles</a></h4>',
+                '<button href="/saved" type="button" class="btn btn-primary btn-lg scrape-new">Go to Saved Articles</button>',
                 '</div>',
                 '</div>'
             ].join(""));

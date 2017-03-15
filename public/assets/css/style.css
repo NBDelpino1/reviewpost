@@ -4,10 +4,6 @@ body {
     background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.navbar {
-    background-color: transparent;
-    border:0;
-}
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -17,6 +13,39 @@ body {
     background-color: transparent;
     border:0;
 }
+
+.jumbotron h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight:700;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.btn {
+    width:252px;
+    margin:10px;
+}
+
+.panel {
+    box-shadow:none;
+}
+
+.panel-heading {
+    background-color: transparent;
+}
+
+.panel-default {
+    background-color: transparent;
+    border:0;
+}
+
+.alert-info {
+    background-image: linear-gradient(to left,#00c6ff 0,#0072ff 100%);
+    border: 0;
+    color: #fff;;
+}
+
+
 
 
 
