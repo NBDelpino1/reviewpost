@@ -1,4 +1,4 @@
-// routes will live here
+// Purpose of this file: routes will live here
 
 // bring in scrape function from scripts directory
 var scrape = require('../scripts/scrape');

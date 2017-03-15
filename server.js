@@ -1,59 +1,27 @@
-// set up node server and include routes
+// Purpose of th file is to set up node server and include routes
 
-// require the dependencies
+// require in express
+// set port
+// set port to use the public folder as the static directory
+// listen and tell me when it's listening
+
+// require dependency : express
 var express = require('express');
-var mongoose = require('mongoose');
 
-var expressHandlebars = require('express-handlebars');
-var bodyParser = require('body-parser');
-
-// set up port
+// set up port : designated to 8080 ; can also be the host's designated port
 var PORT = process.env.PORT || 8080;
 
-// instantiate express
+// instantiate express app
 var app = express();
 
-// set up express router
+// set up an express router
 var router = express.Router();
 
-// require routes file and pass router object
-require('./config/routes')(router);
-
-// designate the public folder the the static directory
+// designate the public folder as the static directory
 app.use(express.static(__dirname + '/public'));
 
-// connect handlebars to express app
-app.engine('handlebars', expressHandlebars({
-    defaultLayout: 'main'
-}));
-
-// set view engine
-app.set('view engine', 'handlebars');
-
-// set up body parser
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-
-// have every request go through router middleware
+// have every request go through the router middleware
 app.use(router);
-
-// if deployed, use the deployed db. Otherwise use the local db on local machine
-var db = process.env.MONGODB_URI || 'mongodb://localhost/reviewpost';
-
-mongoose.Promise = global.Promise;
-
-// connect mongoose to db
-mongoose.connect(db, function(error){
-    //log any errors
-    if (error){
-        console.log(error);
-    }
-    else {
-
-        console.log('mongoose connection successful')
-    }
-});
 
 // listen on the port
 app.listen(PORT, function(){

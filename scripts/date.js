@@ -1,4 +1,4 @@
-// convert date into type of date format needed
+// Purpose of this file: functionality that will convert the date into the format wanted.
 
 var makeDate = function(){
 

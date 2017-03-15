@@ -1,4 +1,6 @@
-// info Cheerio needs to scrape from the selected website
+// Purpose of this file: functionality that Cheerio needs to scrape articles from whatever website.
+
+
 
 // require the two packages (request and cheerio) which will make scrape possible
 

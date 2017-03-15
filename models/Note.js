@@ -1,5 +1,5 @@
-// Note model
-// ==========
+// Purpose for this file: Mongoose schema associated with notes will live here. It will contain what pieces will be saved in the schema table.
+
 
 // require mongoose
 var mongoose = require('mongoose');

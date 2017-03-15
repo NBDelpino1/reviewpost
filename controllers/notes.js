@@ -1,5 +1,5 @@
-// controller for our notes
-// ========================
+// Purpose for this file: CRUD functionality for adding notes will live here
+
 
 // get the date formatting function from out scripts
 var makeDate = require('../scripts/date.js');

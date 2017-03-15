@@ -1,4 +1,4 @@
-// will handle the index page (display results)
+// Purpose of this file : the javascript that will affect the index page will live here
 
 $(document).ready(function () {
 

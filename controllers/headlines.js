@@ -1,4 +1,4 @@
-// will contain CRUD functionality
+// Purpose for this file: CRUD functionality for news articles will live here
 
 //bring in scrape.js script and date.js scripts
 var scrape = require('../scripts/scrape');

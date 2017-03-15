@@ -1,4 +1,6 @@
-// will handle the saved articles page
+// Purpose of this file : the javascript that will affect the saved notes page will live here
+
+
 
 $(document).ready(function(){
 
