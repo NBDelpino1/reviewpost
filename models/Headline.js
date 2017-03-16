@@ -8,10 +8,11 @@ var Schema = mongoose.Schema;
 
 // create the headlineSchema with our schema class
 var headlineSchema = new Schema({
-    // headline, a string, must be entered
+    // headline, a string, must be entered, unique so the same articles are NOT scraped again
     headline: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     // summary, a string, must be entered
     summary:{
@@ -20,6 +21,11 @@ var headlineSchema = new Schema({
     },
     // date is just a string
     date: String,
+    // saved, boolean, set to false but will change to true if user decides to save an article
+    saved: {
+        type: Boolean,
+        default: false
+    }
 });
 
 // create the Headline model using the headlineSchema
