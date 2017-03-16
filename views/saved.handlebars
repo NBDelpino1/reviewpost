@@ -1,3 +1,5 @@
+<!-- Purpose of file: this is what will render inside the body (Main.handlebars) when the user is viewing the saved notes page -->
+
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -13,7 +15,6 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Home</a></li>
             <li><a href="/saved">Saved Articles</a></li>
-            <li><button type="button" class="btn btn-primary btn-lg">Scrape</button></li>
           </ul>
         </div>
       </div>
@@ -22,16 +23,16 @@
     <div class="jumbotron text-center">
       <img src="images/logo-img.png">
       <h1>Reviewpost</h1>
-      <p>Get the latest articles from your favourite website with one click</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      <p>Your Saved Articles</p>
     </div>
 
     <div class="container article-container">
-
     </div>
 
     <footer class="footer text-center">
       <p>Created by Nick Delpino</p>
     </footer>
 
-    <script type="text/javascript" src="../../assets/js/saved.js"></script>
+    <!-- javaScript file that will dynamically populate everything else -->
+
+    <script src="../../assets/js/saved.js"></script>
