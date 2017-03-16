@@ -19,8 +19,7 @@ var makeDate = function(){
 
     // return the fully formatted date
     return formattedDate;
-
 }
 
-// export the date sso it can be used throughout the program
+// export the date  variable so it can be used throughout the program
 module.exports = makeDate;
