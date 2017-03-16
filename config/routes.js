@@ -33,7 +33,7 @@ module.exports = function(router) {
 
     //==================================================================================================================
     //==================================================================================================================
-                            // Routes that will use the different controllers
+                            // *** Routes that will use the different controllers *** //
     //==================================================================================================================
     //==================================================================================================================
 
@@ -108,7 +108,6 @@ module.exports = function(router) {
     // /api/headlines route will:
     // update headlines as needed
     // run the headlines controller update function on whatever the user sends in their request
-
     //==================================================================================================================
 
     router.patch('/api/headlines', function(req,res) {
