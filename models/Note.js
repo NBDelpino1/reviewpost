@@ -1,6 +1,5 @@
 // Purpose for this file: Mongoose schema associated with notes will live here. It will contain what pieces will be saved in the schema table.
 
-
 // require mongoose
 var mongoose = require('mongoose');
 // create the schema class using mongoose's schema method
@@ -15,7 +14,7 @@ var noteSchema = new Schema({
     },
     // date is just a string
     date: String,
-    // as is the noteText
+    // noteText is just a string
     noteText: String
 });
 
