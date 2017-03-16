@@ -8,6 +8,8 @@
 // add express handlebars
 // go to handlebars and get the template needed for the main.handlebars file (this code is not here, see main.handlebars)
 // set up mongo and mongoose, test db connection
+// set view engine
+// require routes file, pass router object
 
 
 // require dependencies : express, body parser, handlebars, mongoose,
@@ -25,6 +27,9 @@ var app = express();
 // set up an express router
 var router = express.Router();
 
+// require routes file and pass router object
+require('./config/routes')(router);
+
 // designate the public folder as the static directory
 app.use(express.static(__dirname + '/public'));
 
@@ -32,6 +37,9 @@ app.use(express.static(__dirname + '/public'));
 app.engine('handlebars', expressHandlebars({
     defaultLayout: 'main'
 }));
+
+// set view engine
+app.set('view engine', 'handlebars');
 
 // set up body parser in the app
 app.use(bodyParser.urlencoded({
