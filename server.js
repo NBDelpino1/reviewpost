@@ -6,8 +6,8 @@
 // listen and tell me when it's listening
 // set up body parser
 // add express handlebars
-// go to handlebars and get the template needed for the main.handlebars file
-// set up mongo and mongoose ORM package
+// go to handlebars and get the template needed for the main.handlebars file (this code is not here, see main.handlebars)
+// set up mongo and mongoose, test db connection
 
 
 // require dependencies : express, body parser, handlebars, mongoose,
