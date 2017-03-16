@@ -1,76 +1,78 @@
 // Purpose for this file: CRUD functionality for news articles will live here
 
-//bring in scrape.js script and date.js scripts
+// bring in scrape.js script and date.js scripts
 var scrape = require('../scripts/scrape');
 var makeDate = require('../scripts/date');
 
 // bring in Headline and Note mongoose models
 var Headline = require('../models/Headline');
 
-// functionality for saving and deleting articles goes here so they can be used throughout the entire program
+// CRUD functionality placed inside of a module.export so it can be exported for use throughout the program:
+// 1. Fetch: runs the scrape function, grab all of the articles and insert them into the headline collection in the mongo database
+// 2. Delete: removes an article from the database
+// 3. Get: gets all the articles out of the database
+// 4. Update: updates articles in the database
+
 module.exports = {
 
-    // (1) *** FETCH will run the scrape function | grab all the articles | insert them into the Headline collection in the Mongo db
+    //==================================================================================================================
+    // anytime fetch runs: pass call back into the function then run scrape;
+    // when scrape runs: set the data to be called articles
+    // go through each article then run the makeDate function to insert the date and set saved to false on all of them
+    // then run a mongo function: take headline and insert into that collection different articles, don't care if they are ordered so set that to false
+    // (err,docs) so that IF one of these articles fail it won't throw an error and stop the whole process; it will skip over it and keep going
+    // call back will return any errors in the docs
+    //==================================================================================================================
 
-    //pass in cb into function then run scrape
     fetch: function(cb) {
         scrape(function(data){
 
-            // set data to articles
             var articles = data;
 
-            // go through each article and run the makeDate function to insert the date and set saved to false
             for (var i = 0; i < articles.length; i ++) {
-
                 articles[i].date = makeDate();
                 articles[i].saved = false;
             }
-
-            // run Mongo function that will take the headline and insert it that collection all the articles,
-            // don't care if the articles are ordered so that was set to false
-            // function(err,docs) ...this is in case one of the articles throws and error it will not stop the process, it will just skip over it and keep going onto the next article until done
             Headline.collection.insertMany(articles, {ordered:false}, function(err,docs) {
-
-                // call back returns any errors
                 cb(err, docs);
 
             });
 
         });
     },
-    // (2) *** DELETE will remove an article
 
-    // whichever headline was queried will be removed
-    delete : function(query, cb) {
+    //==================================================================================================================
+    // anytime delete runs, whatever headline that was queried will be removed
+    //==================================================================================================================
+
+    delete: function(query, cb) {
         Headline.remove(query, cb);
     },
 
-    // already made a ay to insert articles INTO the headline collection - need a way to get them OUT (use get function)
+    //==================================================================================================================
+    // anytime get runs, find all the headlines in the query and sort them most recent to least recent
+    // then once done pass all those documents to the call back function
+    //==================================================================================================================
+
     get: function(query, cb) {
 
-        // find all the headlines in the query and sort them most recent to least recent
         Headline.find(query)
             .sort({
-
                 _id: -1
-
-            }) // when done pass all those docs to the call back function
+            })
             .exec(function(err,doc) {
-
                 cb(doc);
-
             });
     },
 
-    // (3) *** UPDATE will update the articles
-
+    //==================================================================================================================
     // update new articles scraped with the relevant id and update any information that is passed to those articles with that information as well
+    //==================================================================================================================
+
     update: function(query,cb) {
         Headline.update({_id: query._id}, {
 
             $set: query
         }, {}, cb);
-
     }
-
 };
