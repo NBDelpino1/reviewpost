@@ -1,78 +1,63 @@
 // Purpose for this file: CRUD functionality for adding notes will live here
 
+// bring in date.js script
+var makeDate = require('../scripts/date');
 
-// get the date formatting function from out scripts
-var makeDate = require('../scripts/date.js');
-// take in our headline and note mongoose models
-var Headline = require('../models/Headline');
+// bring in Note model
 var Note = require('../models/Note');
 
-// save a note
-// export this function as "save" (data = note info, cb = callback)
-exports.save = function(data, cb) {
+// CRUD functionality placed inside of a module.export so it can be exported for use throughout the program:
+// 1. Get: grabs all the notes that are associated with an article out of the database
+// 2. Save: takes in  data from the user and a call back function and saves it in the database
+// 3. Delete: removes the note associated with an article
 
-    // create a formatted date
-    var formattedDate = makeDate();
+module.exports = {
 
-    // make a newNote with the note model, saving the apropos info
-    var newNote = new Note ({
-        _headlineId:data.id,
-        date:data.date,
-        noteText:data.note
-    });
+    //==================================================================================================================
+    // anytime get runs, find all the notes associated with the headline id in question
+    //==================================================================================================================
 
-    // save the newNote we made to mongoDB with mongoose's save function
-    newNote.save(function(err, doc){
-        // log any errors
-        if (err) {
-            console.log(err);
-        }
-        // or just log the doc we saved
-        else{
-            console.log(doc);
-            // and place the log back in this callback function
-            // so it can be used with other functions asynchronously
-            cb(doc);
-        }
-    });
-};
+    get: function(data,cb) {
 
-// gather notes for a news article.
-// export this function as gather (cb = callback, data = an article obj)
-exports.gather = function(data, cb) {
-    // find all notes with the headline id from the article we passed
-    Note.find({
-        _headlineId: data.id
-    })
-    // and sort the results
-        .sort({
-            id: -1
-        })
-        // now, execute this query
-        .exec(function(err, doc) {
-            // pass the data to our callback
-            // so it can be used asynchronously
-            cb(doc);
+        Note.find({
+            _headlineId: data._id
+        }, cb);
+    },
+
+    //==================================================================================================================
+    // anytime save runs, it takes in data from the user and the call back function
+    // a object newNote is created that has the headline id associated with the note that is being created,
+    // ...date that comes from the makeDate function that was brought in the noteText which is what the user types in
+    // next it takes the note and it goes ahead and creates one. It runs a function that will return an error or a document
+    // if there is an error it will say so otherwise it will pass the newly created note to the call back function
+    //==================================================================================================================
+
+    save: function(data,cb) {
+        var newNote= {
+            _headlineId: data._id,
+            date: makeDate(),
+            noteText: data.noteText
+        };
+
+        Note.create(newNote, function(err,doc) {
+            if(err) {
+                console.log(err);
+            }
+            else {
+                console.log(doc);
+                cb(doc);
+            }
         });
-};
+    },
 
-// delete all notes from an article
-// Export this function as delete (data = article, cb = callback)
-exports.delete = function(data, cb) {
-    // remove a Note using mongoose and our note Model,
-    // searching by the article's id
-    Note.remove({
-        _headlineId:data.id
-    }, function(err, removed){
-        // log any errors
-        if(err){
-            console.log(err);
-        }
-        // or tell the console the delete was successful
-        else {
-            console.log("Delete Sucessful");
-            // and send the "removed" data to our callback function
-            cb(removed);
-        }
-    });
+    //==================================================================================================================
+    // anytime delete runs, it removes the note associated with the article
+    //==================================================================================================================
+
+    delete: function(data,cb) {
+        Note.remove({
+            _id: data._id
+        }, cb);
+    }
+
 };

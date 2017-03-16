@@ -4,7 +4,7 @@
 var scrape = require('../scripts/scrape');
 var makeDate = require('../scripts/date');
 
-// bring in Headline and Note mongoose models
+// bring in Headline model
 var Headline = require('../models/Headline');
 
 // CRUD functionality placed inside of a module.export so it can be exported for use throughout the program:
