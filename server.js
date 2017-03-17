@@ -52,6 +52,8 @@ app.use(router);
 // if deployed, use the deployed db. Otherwise use the db on local machine
 var db = process.env.MONGODB_URI || 'mongodb://localhost/reviewpost';
 
+mongoose.Promise = global.Promise;
+
 // connect mongoose to database
 mongoose.connect(db, function(error){
     // log any errors connecting with mongoose

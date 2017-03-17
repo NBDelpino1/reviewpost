@@ -1,70 +1,77 @@
-// Purpose of this file : the javascript that will affect the index page will live here
+// Purpose of this file : the javascript that will display everything from the database to the homepage (index.js)
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-    // set a reference to the article-container div where all the dynamic content will go
-    // add event listeners to any dynamically generated article (save article)
-    // add "scrape new" article buttons
+    // create div that will hold all of the articles
 
     var articleContainer = $('.article-container');
-    $(document).on('click', '.btn.save', handleArticleSave);
-    $(document).on('click', '.scrape-new', handleArticleSrape);
 
-    // Once page is ready, run the  initPage function to kick things off
+    // if user clicks the button with a class of save : run the handleArticleSave() function //TODO add line number
+    // if user clicks the button with a class of scrape-new button : run the handleArticleScrape() function //TODO add line number
+
+    $(document).on('click', '.btn.save', handleArticleSave);
+    $(document).on('click', '.scrape-new', handleArticleScrape);
+
+    // Once page has loaded run the initPage function that will kick things off
+
     initPage();
+
+    //==================================================================================================================
+    // initPage():
+    // first it empties the article-container
+    // then it runs an ajax get request to the headlines route
+    // if saved = false (meaning the user has not sent it to the saved articles section) then run the main function
+    // if the data exists go ahead and render the articles (renderArticles function) TODO add line number
+    // otherwise render empty (renderEmpty function)TODO add line number
+    //==================================================================================================================
 
     function initPage() {
 
-        // empty the article container, run an AJAX request for any saved headlines
         articleContainer.empty();
         $.get('/api/headlines?saved=false')
-            .then(function (data) {
-
-                // if there are headlines - render them to the page
+            .then(function(data) {
                 if(data && data.length) {
                     renderArticles(data);
                 }
                 else {
-
-                    // otherwise render a message explaining there are none to render
                     renderEmpty();
-
                 }
-
             });
-
     }
+
+    //==================================================================================================================
+    // renderArticles():
+    // creates an array of article panels that is empty
+    // then for every single article that is returned it will push it into the array and create a panel for it
+    // then append it to the article-container
+    //==================================================================================================================
 
     function renderArticles(articles) {
 
-        // function handles appending HTML containing article data to the page
-        // pass an array of JSON data containing all avaliable articles into the db
-
         var articlePanels = [];
 
-        // pass each article JSON object to the createpanel function which returns a panel with article inside
         for(var i = 0; i < articles.length; i ++) {
 
-            articlePanels.push(createPanel(articles[i]));
+            articlePanels.push(createPanel(articles[i])); //TODO - createPanel() list line number
 
         }
-
-        //once I have all the HTML for the article stored in the aticlePanels array
-        //append them to the articlePanels container
 
         articleContainer.append(articlePanels);
 
     }
 
-    function createPanel(article) {
+    //==================================================================================================================
+    // createPanel():
+    // the variable panel will hold the panel inside of which the article headline and button that will allow you to save the article will be inserted
+    // the article summary then comes below that
+    // it will then associate the panel data id with the article id so that when the user clicks save article the app knows which one they want to save
+    //==================================================================================================================
 
-        // this function takes in a single JSON object for an article/headline
-        //it constructs a jQuery element containing all of the formatted HTML for the article panel
+    function createPanel(article) { //TODO - verify cb name && change <a> to a button instead
 
         var panel =
-            $([
-                '<div class="panel panel-default">',
-                '<div class="panel heading">',
+            $([ '<div class="panel panel-default">',
+                '<div class="panel-heading">',
                 '<h3>',
                 article.headline,
                 '<a class="btn btn-success save">',
@@ -72,31 +79,28 @@ $(document).ready(function () {
                 '</a>',
                 '</h3>',
                 '</div>',
-                '<div class="panel body">',
+                '<div class="panel-body">',
                 article.summary,
                 '</div>',
                 '</div>'
             ].join(""));
 
-        // attach thr article's id to the jQuery element
-        // will use this when trying to figure out which articlke the user wants to save
-
         panel.data('_id', article._id);
-
-        // return the constructed panel jQuery element
 
         return panel;
 
     }
 
+    //==================================================================================================================
+    // renderEmpty():
+    // runs if there are no new articles to display to the user
+    // it will tell the user we have none and present the option of either scraping new articles or going to your saved articles
+    //==================================================================================================================
+
     function renderEmpty() {
 
-        // this function renders some HTML to the page explaining we don't have any articles to view
-        // using a joined array of HTML string data because it's easier to read/change than a concatenated string
-
         var emptyAlert =
-            $([
-                '<div class="alert alert-info text-center">',
+            $([ '<div class="alert alert-info text-center">',
                 '<h4>Uh oh. Looks like we do not have any new articles.</h4>',
                 '</div>',
                 '<div class="panel panel-default">',
@@ -104,56 +108,54 @@ $(document).ready(function () {
                 '<h3>What would you like to do?</h3>',
                 '</div>',
                 '<div class="panel-body text-center">',
-                // '<h4><a class="scrape-new">Try Scraping New Articles</a></h4>',
                 '<button type="button" class="btn btn-primary btn-lg scrape-new">Try Scraping New Articles</button>',
-                // '<h4><a href="/saved">Go to Saved Articles</a></h4>',
-                '<button href="/saved" type="button" class="btn btn-primary btn-lg scrape-new">Go to Saved Articles</button>',
+                '<button href="/saved" type="button" class="btn btn-primary btn-lg">Go to Saved Articles</button>',
                 '</div>',
                 '</div>'
             ].join(""));
-
         articleContainer.append(emptyAlert);
     }
 
-    function handleArticleSave() {
+    //==================================================================================================================
+    // handleArticleSave():
+    // the variable articleToSave is set to whatever the panel data id associated with what the user clicked on is
+    // saved is set to true because the user has decided they want to save it (initially set to false)
+    // next run the ajax method against PATCH on the listed url and change the data to articleToSave
+    // then if the data is okay (in other words if its 'true' or if it exists)- run the initPage() function again TODO add line number
+    // this will reload all of the articles BUT it will remove the one the user has saved so they will not have the option to save it anymore (it's already in the saved articles section don't need it twice
+    //==================================================================================================================
 
-        // this function is triggered when the user wants to save an article
-        // when I rendered the article initially, I attached a javascript object containing the deadline id to the element using the .data method. Here I retrieve that
+    function handleArticleSave() {
 
         var articleToSave = $(this).parents('.panel').data();
         articleToSave.saved = true;
 
-        // using patch method to be semantic since this is an update to an existing record in the collection
-
         $.ajax({
-            method: 'PATCH',
-            url: '/api/headlines',
-            data: articleToSave
+            method:'PATCH',
+            url:'/api/headlines',
+            data:articleToSave
         })
-            .then(function (data) {
-
-                // if successful mongoose will send back an object containing a key of 'ok' with the value of 1 which casts to true
+            .then(function(data) {
 
                 if(data.ok) {
-
-                    // run the initPage function again, this will reload the entire list of articles
                     initPage();
-
                 }
 
             });
 
     }
 
-    function handleArticleSrape() {
+    //==================================================================================================================
+    // handleArticleScrape():
+    // goes to the api fetch route
+    // runs the initPage() function again so that it can reload all of the new articles
+    // it will also go ahead and alert the user (using bootbox modal and data.message) if there were no new articles or a certain number was added
+    //==================================================================================================================
 
-        // this function handles the user clicking an 'scrape new article'
+    function handleArticleScrape() {
 
         $.get('/api/fetch')
-            .then(function (data) {
-
-                // if I am able to successfully scrape the website and compare the articles to those
-                // already in the collection, re render the articles on the page and let the user know how many unique articles they were able to save
+            .then(function(data) {
 
                 initPage();
                 bootbox.alert('<h3 class="text-center m-top-80">' + data.message + '</h3>');
@@ -162,4 +164,5 @@ $(document).ready(function () {
 
     }
 
+    //====================================================
 });
