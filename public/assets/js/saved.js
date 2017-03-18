@@ -74,10 +74,10 @@ $(document).ready(function() {
                 '<div class="panel-heading">',
                 '<h3>',
                 article.headline,
-                '<a class="btn btn-danger delete">',
-                'Delete from saved',
+                '<a class="btn btn-danger btn-danger-square delete">',
+                'Delete From Saved',
                 '</a>', ,
-                '<a class="btn btn-info notes">Article Notes</a>',
+                '<a class="btn btn-info btn-info-square notes">Article Notes</a>',
                 '</h3>',
                 '</div>',
                 '<div class="panel-body">',
@@ -158,13 +158,13 @@ $(document).ready(function() {
         $.get('/api/notes/' + currentArticle._id).then(function(data) {
 
             var modalText = [
-                '<div class="container text-center">',
+                '<div class="container-fluid text-center">',
                 '<h4>Notes For Article: ',
                 currentArticle._id,
                 '</h4>',
                 '<ul class="list-group note-container">',
                 '</ul>',
-                '<textarea placeholder="New Note" rows="4" cols="60"></textarea>',
+                '<textarea placeholder="add note here..." rows="6"></textarea>',
                 '<button class="btn btn-success save">Save Note</button>',
                 '</div>'
             ].join("");
@@ -212,10 +212,15 @@ $(document).ready(function() {
         } else {
             for(var i=0; i < data.notes.length; i ++) {
                 currentNote = $([
-                    '<li class="list-group-item note">',
+                    // '<li class="list-group-item note">',
+                    // data.notes[i].noteText,
+                    // '<button class="btn btn-danger note-delete">Delete</button>',
+                    // '</li>'
+                    '<li class="list-group-item text-left">',
                     data.notes[i].noteText,
-                    '<button class="btn btn-danger note-delete">x</button>',
-                    '</li>'
+                    '<br>',
+                    '<button class="btn btn-danger note-delete btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></button>',
+                    '</li>',
                 ].join(""));
 
                 currentNote.children('button').data('_id', data.notes[i]._id);
