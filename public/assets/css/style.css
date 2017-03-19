@@ -1,5 +1,5 @@
 /*===========================================================*/
-/* Global Styles */
+                    /* Global Styles */
 /*===========================================================*/
 
 body {
@@ -25,14 +25,12 @@ h1,h2,h3,h4,h5,h6 {
     color: #fff;
 }
 
-
-
+/* navbar color when mobile */
 @media screen and (max-width: 668px) {
     .navbar-collapse {
         background-color: rgba(0, 0, 0, 0.22);
     }
 }
-
 
 /* hamburger */
 .icon-bar {
@@ -62,6 +60,24 @@ h1,h2,h3,h4,h5,h6 {
 .article-headline {
     color: #3f51b5;
 }
+
+.footer-icon {
+    margin-right:10px;
+    margin-left: 10px;
+    color: #000;
+}
+
+/* to accomodate for larger resume-icon */
+.fa-github-square, .fa-linkedin-square {
+    font-size:35px;
+}
+
+
+/*===========================================================*/
+                /* Local Styles */
+/*===========================================================*/
+
+
 /*===========================================================*/
 /* Home Page Styles */
 /*===========================================================*/
@@ -142,13 +158,12 @@ h1,h2,h3,h4,h5,h6 {
 /* name of the site being viewed text styles desktop */
 .sitename-being-viewed-text {
     margin-top:15px;
-    font-family: 'Orbitron', sans-serif;
+    /*font-size:15px;*/
     display: inline;
-    text-transform: uppercase;
 }
 
 /* icon after site-name being viewed headline */
-.fa {
+.rss-icon {
     color: #d81b0d;
 }
 
@@ -169,6 +184,17 @@ h1,h2,h3,h4,h5,h6 {
 /*===========================================================*/
 /* Saved Page Styles */
 /*===========================================================*/
+
+/* container displaying message if no notes saved */
+.no-note-msg-holder {
+    margin-top:20px;
+    margin-bottom:5px;
+}
+
+/* */
+.no-note-msg, .empty-box-icon {
+    color: #3f51b5;
+}
 
 /* container around the delete article and see article buttons */
 .note-button-holder {

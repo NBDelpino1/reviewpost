@@ -52,6 +52,13 @@ app.use(router);
 // if deployed, use the deployed db. Otherwise use the db on local machine
 var db = process.env.MONGODB_URI || 'mongodb://localhost/reviewpost';
 
+if(db === 'development') {
+    var db = process.env.MONGODB_URI || 'mongodb://localhost/reviewpost';
+}
+else {
+    mongoose.connect('mongodb://nick:reviewpost@ds137040.mlab.com:37040/reviewpost')
+}
+
 mongoose.Promise = global.Promise;
 
 // // connect mongoose to database
@@ -66,46 +73,6 @@ mongoose.Promise = global.Promise;
 //         console.log('mongoose connection successful')
 //     }
 // });
-
-
-
-
-
-// testing=============
-
-// connect mongoose to database
-// mongoose.connect('mongodb://nick:reviewpost@ds137040.mlab.com:37040/reviewpost', function(error){
-//     // log any errors connecting with mongoose
-//     if (error){
-//         console.log(error);
-//     }
-//     // or log a success message
-//     else {
-//
-//         console.log('mongoose connection successful')
-//     }
-// });
-
-
-
-if(db === 'development') {
-    var db = process.env.MONGODB_URI || 'mongodb://localhost/reviewpost';
-}
-else {
-    mongoose.connect('mongodb://nick:reviewpost@ds137040.mlab.com:37040/reviewpost')
-}
-
-
-// testing=============
-
-
-
-
-
-
-
-
-
 
 // listen on the port
 app.listen(PORT, function(){

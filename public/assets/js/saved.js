@@ -107,9 +107,10 @@ $(document).ready(function() {
 
         var emptyAlert =
             $([
-                '<div class="text-center">',
-                '<p>Your saved list is empty</p>',
-                '<p><a class="btn btn-primary btn-lg" href="/" role="button">Browse Articles</a></p>',
+                '<div class="container no-note-msg-holder text-center">',
+                '<h3 class="no-note-msg">Your saved list is empty</h3>',
+                '<p>Click Home button to check some out</p>',
+                '<span><i class="fa fa-inbox fa-4x empty-box-icon" aria-hidden="true"></i></span>',
                 '</div>'
             ].join(""));
         articleContainer.append(emptyAlert);
@@ -201,7 +202,7 @@ $(document).ready(function() {
 
             currentNote = [
                 '<li class="list-group-item">',
-                'No notes for this article yet',
+                'No Notes',
                 '</li>'
             ].join("");
             notesToRender.push(currentNote);
@@ -209,10 +210,6 @@ $(document).ready(function() {
         } else {
             for(var i=0; i < data.notes.length; i ++) {
                 currentNote = $([
-                    // '<li class="list-group-item note">',
-                    // data.notes[i].noteText,
-                    // '<button class="btn btn-danger note-delete">Delete</button>',
-                    // '</li>'
                     '<li class="list-group-item text-left">',
                     data.notes[i].noteText,
                     '<br>',

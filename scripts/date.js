@@ -20,22 +20,13 @@ var makeDate = function(){
     // return the fully formatted date
     return formattedDate;
 
-
-
-
-
-// push the date into the array
+    // push the date into the array
     var articles = [];
     var dataToAdd = {
         date: formattedDate,
     };
     // push the new dataToAdd into the articles array
     articles.push(dataToAdd);
-
-
-
-
-
 };
 
 // export the date  variable so it can be used throughout the program
