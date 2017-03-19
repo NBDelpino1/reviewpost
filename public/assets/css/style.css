@@ -15,9 +15,24 @@ h1,h2,h3,h4,h5,h6 {
     font-weight:200;
 }
 
+/* navbar date display */
 #spanDate {
-    color: #000;
+    color: #fff;
 }
+
+/* navbar links */
+.nav li a {
+    color: #fff;
+}
+
+
+
+@media screen and (max-width: 668px) {
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.22);
+    }
+}
+
 
 /* hamburger */
 .icon-bar {
@@ -118,6 +133,7 @@ h1,h2,h3,h4,h5,h6 {
     padding:0;
     margin:25px 0 25px 0;
 }
+
 /* contains the site-name-being viewed text */
 .page-header {
      margin-top:15px;
