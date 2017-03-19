@@ -1,3 +1,7 @@
+/*===========================================================*/
+/* Global Styles */
+/*===========================================================*/
+
 body {
     /*background: #00c6ff; !* fallback for old browsers *!*/
     /*background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); !* Chrome 10-25, Safari 5.1-6 *!*/
@@ -15,6 +19,21 @@ h1,h2,h3,h4,h5,h6 {
     background-color:#d81b0d;;
 }
 
+.btn {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:30px;
+}
+/*===========================================================*/
+/* Home Page Styles */
+/*===========================================================*/
+
 .jumbotron {
     background:
             linear-gradient(
@@ -23,6 +42,7 @@ h1,h2,h3,h4,h5,h6 {
             ),
             url(../images/jumbo.jpeg)no-repeat center center scroll;
     background-size: cover;
+    margin-bottom:0;
     border:0;
 }
 
@@ -35,29 +55,8 @@ h1,h2,h3,h4,h5,h6 {
     color: #fff;
 }
 
-/*Article Notes Pop up*/
-.btn-circle {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 50%;
-}
-
-.list-group-item {
-    border-radius:0;
-}
-
-textarea {
-    width:100%;
-    border: 1px solid #dddddd;
-}
-
-/*global green button style*/
-
-.btn-primary {
+ /* home page new articles button */
+.btn-new-articles {
     background: #d81b0d;
     width:175px;
     height:50px;
@@ -70,7 +69,21 @@ textarea {
     line-height:30px;
 }
 
-.btn-success {
+/* home page saved articles button */
+.btn-saved-articles {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:30px;
+}
+
+/* home page save an article button */
+.btn-save-an-article {
     width:175px;
     height:50px;
     margin:5px;
@@ -83,54 +96,117 @@ textarea {
     line-height:41px;
 }
 
-.btn-danger-square {
-    width:175px;
-    height:50px;
-    margin:5px;
-    border:0;
-    border-radius:0;
-    color: #fff;
-    font-size:12px;
-    font-weight:200;
-    line-height:41px;
-}
-
-.btn-info-square {
-    width:175px;
-    height:50px;
-    margin:5px;
-    border:0;
-    border-radius:0;
-    color: #fff;
-    font-size:12px;
-    font-weight:200;
-    line-height:41px;
-}
-
+/* each container that holds the scraped article */
 .article-holder {
-    background-color: #fff;
     margin-bottom:5px;
 }
 
+/* article headline */
 .article-headline {
     color: #3f51b5;
 }
 
+/* container around the save button */
 .save-button-holder {
     padding:0;
     margin:25px 0 25px 0;
 }
-
+/* contains the site-name-being viewed text */
 .page-header {
-    font-family: 'Merriweather', serif;
+     margin-top:15px;
+ }
+
+/* name of the site being viewed text styles desktop */
+.sitename-being-viewed-text {
+    margin-top:15px;
+    font-family: 'Orbitron', sans-serif;
+    display: inline;
+    text-transform: uppercase;
 }
 
-.title-being-streamed {
-    color: #3f51b5;
-}
-
+/* icon after site-name being viewed headline */
 .fa {
     color: #d81b0d;
+}
+
+/*  name of the site being viewed text styles - mobile portrait */
+@media screen and (max-width: 480px) {
+    .sitename-being-viewed-text {
+        font-size:10px;
+    }
+}
+
+/* name of the site being viewed text styles - mobile landscape */
+@media screen and (max-width: 668px) {
+    .sitename-being-viewed-text {
+        font-size:10px;
+    }
+}
+
+/*===========================================================*/
+/* Saved Page Styles */
+/*===========================================================*/
+
+/* button for deleting articles */
+.btn-delete-article {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:41px;
+}
+
+/* button for viewing notes */
+.btn-see-article-note {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:41px;
+}
+
+/* for listing out individual notes user added */
+.list-group-item {
+    border-radius:0;
+}
+
+/* user enters their note here */
+textarea {
+    width:100%;
+    border: 1px solid #dddddd;
+}
+
+/* button for adding a new note (found in modal) */
+.btn-save-a-note {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    background-color:#8bc34a;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:41px;
+}
+
+/* button for deleting notes (found in modal) */
+.btn-delete-article-note {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 50%;
 }
 
 

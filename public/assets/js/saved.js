@@ -74,10 +74,10 @@ $(document).ready(function() {
                 '<div class="panel-heading">',
                 '<h3>',
                 article.headline,
-                '<a class="btn btn-danger btn-danger-square delete">',
+                '<a class="btn btn-danger btn-delete-article delete">',
                 'Delete From Saved',
                 '</a>', ,
-                '<a class="btn btn-info btn-info-square notes">Article Notes</a>',
+                '<a class="btn btn-primary btn-see-article-note notes">Article Notes</a>',
                 '</h3>',
                 '</div>',
                 '<div class="panel-body">',
@@ -157,7 +157,7 @@ $(document).ready(function() {
                 '<ul class="list-group note-container">',
                 '</ul>',
                 '<textarea placeholder="add note here..." rows="6"></textarea>',
-                '<button class="btn btn-success save">Save Note</button>',
+                '<button class="btn btn-success btn-save-a-note save">Save Note</button>',
                 '</div>'
             ].join("");
 
@@ -211,7 +211,7 @@ $(document).ready(function() {
                     '<li class="list-group-item text-left">',
                     data.notes[i].noteText,
                     '<br>',
-                    '<button class="btn btn-danger note-delete btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></button>',
+                    '<button class="btn btn-danger note-delete btn-delete-article-note btn-lg"><i class="glyphicon glyphicon-remove"></i></button>',
                     '</li>',
                 ].join(""));
 

@@ -101,7 +101,7 @@ $(document).ready(function() {
                 article.summary,
                 '<br>',
                 '<div class="container save-button-holder">',
-                '<a class="btn btn-success save">',
+                '<a class="btn btn-success btn-save-an-article save">',
                 'Save Article',
                 '</a>',
                 '</div>',
