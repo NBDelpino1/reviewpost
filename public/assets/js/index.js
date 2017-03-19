@@ -67,22 +67,46 @@ $(document).ready(function() {
     // it will then associate the panel data id with the article id so that when the user clicks save article the app knows which one they want to save
     //==================================================================================================================
 
+    // function createPanel(article) { //TODO - verify cb name && change <a> to a button instead
+    //
+    //     var panel =
+    //         $([ '<div class="panel panel-default">',
+    //             '<div class="panel-heading">',
+    //             '<h3>',
+    //             article.headline,
+    //             '<a class="btn btn-success save pull-right">',
+    //             'Save Article',
+    //             '</a>',
+    //             '</h3>',
+    //             '</div>',
+    //             '<div class="panel-body">',
+    //             article.summary,
+    //             '</div>',
+    //             '</div>'
+    //         ].join(""));
+    //
+    //     panel.data('_id', article._id);
+    //
+    //     return panel;
+    //
+    // }
+
     function createPanel(article) { //TODO - verify cb name && change <a> to a button instead
 
         var panel =
-            $([ '<div class="panel panel-default">',
-                '<div class="panel-heading">',
-                '<h3>',
+            $([ '<div class="container article-holder">',
+                '<h3 class="article-headline">',
                 article.headline,
+                '</h3>',
+                article.summary,
+                '<br>',
+                '<div class="container save-button-holder">',
                 '<a class="btn btn-success save">',
                 'Save Article',
                 '</a>',
-                '</h3>',
                 '</div>',
-                '<div class="panel-body">',
-                article.summary,
                 '</div>',
-                '</div>'
+                '<hr>'
             ].join(""));
 
         panel.data('_id', article._id);
@@ -127,7 +151,7 @@ $(document).ready(function() {
 
     function handleArticleSave() {
 
-        var articleToSave = $(this).parents('.panel').data();
+        var articleToSave = $(this).parents('.article-holder').data();
         articleToSave.saved = true;
 
         $.ajax({

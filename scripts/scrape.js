@@ -47,7 +47,7 @@ var scrape = function(cb){
                 articles.push(dataToAdd);
             }
         });
-        console.log(articles)
+        console.log(articles);
         // call back sends back articles
         cb(articles);
     });
