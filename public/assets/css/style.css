@@ -6,19 +6,26 @@ body {
     /*background: #00c6ff; !* fallback for old browsers *!*/
     /*background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); !* Chrome 10-25, Safari 5.1-6 *!*/
     /*background: linear-gradient(to left, #00c6ff , #0072ff); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    font-family: 'Open Sans', sans-serif;
     font-size:16px;
     font-weight:200;
-    font-family: 'Open Sans', sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6 {
     font-weight:200;
 }
 
-.icon-bar {
-    background-color:#d81b0d;;
+#spanDate {
+    color: #000;
 }
 
+/* hamburger */
+.icon-bar {
+    /*background-color:#d81b0d;*/
+    background-color:#fff;
+}
+
+/* general button styling */
 .btn {
     width:175px;
     height:50px;
@@ -29,6 +36,16 @@ h1,h2,h3,h4,h5,h6 {
     font-size:12px;
     font-weight:200;
     line-height:30px;
+}
+
+/* container that holds the article that was scraped and or saved (applied on both pages) */
+.article-holder {
+    margin-bottom:5px;
+}
+
+/* article headline styling (applied on both pages)*/
+.article-headline {
+    color: #3f51b5;
 }
 /*===========================================================*/
 /* Home Page Styles */
@@ -96,16 +113,6 @@ h1,h2,h3,h4,h5,h6 {
     line-height:41px;
 }
 
-/* each container that holds the scraped article */
-.article-holder {
-    margin-bottom:5px;
-}
-
-/* article headline */
-.article-headline {
-    color: #3f51b5;
-}
-
 /* container around the save button */
 .save-button-holder {
     padding:0;
@@ -147,6 +154,12 @@ h1,h2,h3,h4,h5,h6 {
 /* Saved Page Styles */
 /*===========================================================*/
 
+/* container around the delete article and see article buttons */
+.note-button-holder {
+    padding:0;
+    margin:25px 0 25px 0;
+}
+
 /* button for deleting articles */
 .btn-delete-article {
     width:175px;
@@ -172,6 +185,8 @@ h1,h2,h3,h4,h5,h6 {
     font-weight:200;
     line-height:41px;
 }
+
+/* below is in the modal */
 
 /* for listing out individual notes user added */
 .list-group-item {
@@ -209,6 +224,18 @@ textarea {
     border-radius: 50%;
 }
 
+/* button for adding a new note (found in modal) */
+.btn-home {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:30px;
+}
 
 
 

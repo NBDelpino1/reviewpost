@@ -2,6 +2,13 @@
 
 $(document).ready(function() {
 
+    // get today's date and display it on the page
+
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var today = new Date();
+    today.setTime(today.getTime());
+    document.getElementById("spanDate").innerHTML = months[today.getMonth()] + " " + today.getDate()+ ", " + today.getFullYear();
+
     // create div that will hold all of the articles
 
     var articleContainer = $('.article-container');
@@ -70,20 +77,18 @@ $(document).ready(function() {
     function createPanel(article) { //TODO - verify cb name && change <a> to a button instead
 
         var panel =
-            $([ '<div class="panel panel-default">',
-                '<div class="panel-heading">',
-                '<h3>',
+            $([ '<div class="container article-holder">',
+                '<h3 class="article-headline">',
                 article.headline,
-                '<a class="btn btn-danger btn-delete-article delete">',
-                'Delete From Saved',
-                '</a>', ,
-                '<a class="btn btn-primary btn-see-article-note notes">Article Notes</a>',
                 '</h3>',
-                '</div>',
-                '<div class="panel-body">',
                 article.summary,
+                '<br>',
+                '<div class="container note-button-holder">',
+                '<a class="btn btn-danger btn-delete-article delete">Delete</a>',
+                '<a class="btn btn-primary btn-see-article-note notes">Notes</a>',
                 '</div>',
-                '</div>'
+                '</div>',
+                '<hr>'
             ].join(""));
 
         panel.data('_id', article._id);
@@ -118,7 +123,7 @@ $(document).ready(function() {
 
     function handleArticleDelete() {
 
-        var articleToDelete = $(this).parents('.panel').data();
+        var articleToDelete = $(this).parents('.article-holder').data();
 
         $.ajax({
             method:'DELETE',
@@ -145,7 +150,7 @@ $(document).ready(function() {
 
     function handleArticleNotes(){
 
-        var currentArticle = $(this).parents('.panel').data();
+        var currentArticle = $(this).parents('.article-holder').data();
 
         $.get('/api/notes/' + currentArticle._id).then(function(data) {
 

@@ -2,6 +2,14 @@
 
 $(document).ready(function() {
 
+
+    // get today's date and display it on the page
+
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var today = new Date();
+    today.setTime(today.getTime());
+    document.getElementById("spanDate").innerHTML = months[today.getMonth()] + " " + today.getDate()+ ", " + today.getFullYear();
+
     // create div that will hold all of the articles
 
     var articleContainer = $('.article-container');
@@ -66,30 +74,6 @@ $(document).ready(function() {
     // the article summary then comes below that
     // it will then associate the panel data id with the article id so that when the user clicks save article the app knows which one they want to save
     //==================================================================================================================
-
-    // function createPanel(article) { //TODO - verify cb name && change <a> to a button instead
-    //
-    //     var panel =
-    //         $([ '<div class="panel panel-default">',
-    //             '<div class="panel-heading">',
-    //             '<h3>',
-    //             article.headline,
-    //             '<a class="btn btn-success save pull-right">',
-    //             'Save Article',
-    //             '</a>',
-    //             '</h3>',
-    //             '</div>',
-    //             '<div class="panel-body">',
-    //             article.summary,
-    //             '</div>',
-    //             '</div>'
-    //         ].join(""));
-    //
-    //     panel.data('_id', article._id);
-    //
-    //     return panel;
-    //
-    // }
 
     function createPanel(article) { //TODO - verify cb name && change <a> to a button instead
 
@@ -190,3 +174,7 @@ $(document).ready(function() {
 
     //====================================================
 });
+
+
+
+

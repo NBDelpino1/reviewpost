@@ -10,7 +10,6 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
-
 var scrape = function(cb){
 
     // use request package to request specified website,  will get err, res and body back
