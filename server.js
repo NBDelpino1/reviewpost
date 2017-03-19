@@ -11,7 +11,6 @@
 // set view engine
 // require routes file, pass router object
 
-
 // require dependencies : express, body parser, handlebars, mongoose,
 var express = require('express');
 var mongoose = require('mongoose');
