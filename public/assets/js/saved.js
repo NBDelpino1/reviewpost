@@ -100,23 +100,43 @@ $(document).ready(function() {
     // it will tell the user we have none and present the option to browse available articles via a button
     //==================================================================================================================
 
+    // function renderEmpty() {
+    //
+    //     var emptyAlert =
+    //         $([ '<div class="alert alert-info text-center">',
+    //             '<h4>Uh oh. Looks like we do not have any new articles.</h4>',
+    //             '</div>',
+    //             '<div class="panel panel-default">',
+    //             '<div class="panel-heading text-center">',
+    //             '<h3>Would you like to browse available articles?</h3>',
+    //             '</div>',
+    //             '<div class="panel-body text-center">',
+    //             '<button href="/" type="button" class="btn btn-primary btn-lg">Browse Articles</button>',
+    //             '</div>',
+    //             '</div>'
+    //         ].join(""));
+    //     articleContainer.append(emptyAlert);
+    // }
+
+
+
     function renderEmpty() {
 
         var emptyAlert =
-            $([ '<div class="alert alert-info text-center">',
-                '<h4>Uh oh. Looks like we do not have any new articles.</h4>',
-                '</div>',
-                '<div class="panel panel-default">',
-                '<div class="panel-heading text-center">',
-                '<h3>Would you like to browse available articles?</h3>',
-                '</div>',
-                '<div class="panel-body text-center">',
-                '<button href="/" type="button" class="btn btn-primary btn-lg">Browse Articles</button>',
-                '</div>',
+            $([
+                '<div class="text-center">',
+                '<p>Your saved list is empty</p>',
+                '<p><a class="btn btn-primary btn-lg" href="/" role="button">Browse Articles</a></p>',
                 '</div>'
+
+
+
             ].join(""));
         articleContainer.append(emptyAlert);
     }
+
+
+
 
     //==================================================================================================================
     // handleArticleDelete():

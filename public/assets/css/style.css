@@ -2,8 +2,14 @@ body {
     background: #00c6ff; /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-size:16px;
+    font-weight:200;
+    font-family: 'Open Sans', sans-serif;
 }
 
+h1,h2,h3,h4,h5,h6 {
+    font-weight:200;
+}
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -16,34 +22,12 @@ body {
 
 .jumbotron h1 {
     font-family: 'Orbitron', sans-serif;
-    font-weight:700;
-    letter-spacing: 2px;
     color: #fff;
 }
 
-.btn {
-    width:252px;
-    margin:10px;
-}
 
-.panel {
-    box-shadow:none;
-}
 
-.panel-heading {
-    background-color: transparent;
-}
 
-.panel-default {
-    background-color: transparent;
-    border:0;
-}
-
-.alert-info {
-    background-image: linear-gradient(to left,#00c6ff 0,#0072ff 100%);
-    border: 0;
-    color: #fff;;
-}
 
 /*Article Notes Pop up*/
 .btn-circle {
@@ -67,42 +51,55 @@ textarea {
 
 /*global green button style*/
 
+.btn-primary {
+    width:175px;
+    height:50px;
+    margin:5px;
+    border:0;
+    border-radius:0;
+    color: #fff;
+    font-size:12px;
+    font-weight:200;
+    line-height:30px;
+}
+
 .btn-success {
-    width:200px;
+    width:175px;
+    height:50px;
+    margin:5px;
     border:0;
     border-radius:0;
     background-color:#8bc34a;
     color: #fff;
-    font-weight:300;
+    font-size:12px;
+    font-weight:200;
     line-height:41px;
 }
-
-.btn-primary {
-    border:0;
-    border-radius:0;
-    color: #fff;
-    font-weight:300;
-    line-height:41px;
-}
-
 
 .btn-danger-square {
-    width:200px;
+    width:175px;
+    height:50px;
+    margin:5px;
     border:0;
     border-radius:0;
     color: #fff;
-    font-weight:300;
+    font-size:12px;
+    font-weight:200;
     line-height:41px;
 }
 
 .btn-info-square {
-    width:200px;
+    width:175px;
+    height:50px;
+    margin:5px;
     border:0;
     border-radius:0;
     color: #fff;
-    font-weight:300;
+    font-size:12px;
+    font-weight:200;
     line-height:41px;
 }
+
 
 
 
