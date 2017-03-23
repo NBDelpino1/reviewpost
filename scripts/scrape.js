@@ -30,6 +30,7 @@ var scrape = function(cb){
             // for this .story-heading that it's on right now; grab the child story-heading; grab the text out of that; remove any white sace and store into a variable called head
             // repeat for .summary
             var head = $(this).children('.story-heading').text().trim();
+
             var sum = $(this).children('.summary').text().trim();
 
             // if head and sum exist it means the scrape was successful so next run a replace rejex method which pretty just cleans up the text with white space
@@ -54,3 +55,8 @@ var scrape = function(cb){
 
 // export scrape variable to it can be used throughout the program
 module.exports = scrape;
+
+
+
+
+

@@ -84,8 +84,8 @@ $(document).ready(function() {
                 article.summary,
                 '<br>',
                 '<div class="container note-button-holder">',
-                '<a class="btn btn-danger btn-delete-article delete">Delete</a>',
-                '<a class="btn btn-primary btn-see-article-note notes">Notes</a>',
+                '<a class="btn btn-danger btn-delete-article delete">Delete Article</a>',
+                '<a class="btn btn-primary btn-see-article-note notes">Add / View Note</a>',
                 '</div>',
                 '</div>',
                 '<hr>'
